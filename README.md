@@ -33,7 +33,7 @@ Euclidean distance as metric to compute heuristic doesn’t generate feasible pa
 The truck sometimes used to get stuck at locations close to the obstacles and can’t find path quickly. To solve this problem, in the local A-star, the heuristic was updated to include a penalty on distance from the obstacles of the form (1/(1+ exp(d)) where d is the distance of the truck from the centre of the obstacle. In the RRT portion, with a random probability, nodes are sample from a gaussian distribution, whose mean is the centre of a randomly chosen obstacle. This improves the chances of finding a path quickly, and is still complete in probability.
 RRT would expand in random directions with no aim till goal is reached, which again increased the time to reach the goal. This was solved by sampling the end goal as the node, with a small probability of 0.01. And steering technique was used to generate multiple nodes in the direction of the sampled node from the nearest node. Note that the direction is determined by A –star which does assume that there are obstacles and the nearest node is determined by the Reeds Shepp distance metric.
 
-Important Notes:
+Bag of Tricks:
 Reedshepp distance matric was used both in heuristric of Astar and RRT(to find nearest node from the sample).
 Given a nearest node and sample node a path was generated from nearest node to sampled node using Astar assuming no obstacles. All collision free points were addded to the tree. this increase rate of expansion of the tree
 Goal biasing is present which samples the goal node with small probability
